@@ -1,0 +1,206 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  /* Blockchain dApp Color Palette */
+  --primary: #1E40AF; /* Deep Blue - Trust & Security */
+  --primary-foreground: #F8FAFC; /* Off-White */
+  --sidebar-primary: #1E40AF;
+  --sidebar-primary-foreground: #F8FAFC;
+  --chart-1: #3B82F6; /* Light Blue */
+  --chart-2: #1E40AF; /* Deep Blue */
+  --chart-3: #1E3A8A; /* Darker Blue */
+  --chart-4: #0F172A; /* Very Dark Blue */
+  --chart-5: #0C0E16; /* Almost Black */
+  --radius: 0.65rem;
+  --background: #F8FAFC; /* Off-White Background */
+  --foreground: #0F172A; /* Very Dark Blue Text */
+  --card: #FFFFFF; /* Pure White Cards */
+  --card-foreground: #0F172A;
+  --popover: #FFFFFF;
+  --popover-foreground: #0F172A;
+  --secondary: #64748B; /* Slate Gray */
+  --secondary-foreground: #0F172A;
+  --muted: #E2E8F0; /* Light Slate */
+  --muted-foreground: #475569; /* Medium Slate */
+  --accent: #059669; /* Emerald Green - Success */
+  --accent-foreground: #FFFFFF;
+  --destructive: #DC2626; /* Rose Red - Error */
+  --destructive-foreground: #FFFFFF;
+  --border: #E2E8F0; /* Light Slate Border */
+  --input: #E2E8F0;
+  --ring: #1E40AF; /* Deep Blue Ring */
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #0F172A;
+  --sidebar-accent: #F0F9FF; /* Light Blue Background */
+  --sidebar-accent-foreground: #1E40AF;
+  --sidebar-border: #E2E8F0;
+  --sidebar-ring: #1E40AF;
+  
+  /* Typography */
+  --font-display: 'Sora', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+.dark {
+  /* Dark Mode Color Palette */
+  --primary: #3B82F6; /* Light Blue */
+  --primary-foreground: #0F172A;
+  --sidebar-primary: #3B82F6;
+  --sidebar-primary-foreground: #0F172A;
+  --background: #0F172A; /* Very Dark Blue */
+  --foreground: #F1F5F9; /* Light Gray */
+  --card: #1E293B; /* Dark Slate */
+  --card-foreground: #F1F5F9;
+  --popover: #1E293B;
+  --popover-foreground: #F1F5F9;
+  --secondary: #94A3B8; /* Light Slate */
+  --secondary-foreground: #F1F5F9;
+  --muted: #334155; /* Medium Dark Slate */
+  --muted-foreground: #CBD5E1; /* Light Slate */
+  --accent: #10B981; /* Bright Emerald */
+  --accent-foreground: #0F172A;
+  --destructive: #EF4444; /* Bright Red */
+  --destructive-foreground: #0F172A;
+  --border: #334155;
+  --input: #334155;
+  --ring: #3B82F6;
+  --chart-1: #60A5FA; /* Light Blue */
+  --chart-2: #3B82F6; /* Medium Blue */
+  --chart-3: #1E40AF; /* Deep Blue */
+  --chart-4: #1E3A8A; /* Darker Blue */
+  --chart-5: #0F172A; /* Very Dark Blue */
+  --sidebar: #1E293B;
+  --sidebar-foreground: #F1F5F9;
+  --sidebar-accent: #1E3A8A; /* Deep Blue Background */
+  --sidebar-accent-foreground: #3B82F6;
+  --sidebar-border: #334155;
+  --sidebar-ring: #3B82F6;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply font-semibold;
+  }
+  h1 {
+    @apply text-4xl;
+  }
+  h2 {
+    @apply text-3xl;
+  }
+  h3 {
+    @apply text-2xl;
+  }
+  code, pre {
+    @apply font-mono;
+  }
+}
+
+@layer components {
+  /**
+   * Custom container utility that centers content and adds responsive padding.
+   *
+   * This overrides Tailwind's default container behavior to:
+   * - Auto-center content (mx-auto)
+   * - Add responsive horizontal padding
+   * - Set max-width for large screens
+   *
+   * Usage: <div className="container">...</div>
+   *
+   * For custom widths, use max-w-* utilities directly:
+   * <div className="max-w-6xl mx-auto px-4">...</div>
+   */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* 16px - mobile padding */
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem; /* 32px - desktop padding */
+      padding-right: 2rem;
+      max-width: 1280px; /* Standard content width */
+    }
+  }
+}
