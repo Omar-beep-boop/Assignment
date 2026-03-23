@@ -1,3 +1,5 @@
+import { getContract } from "../lib/contract";
+import { hashFile } from "../utils/hash";
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -9,6 +11,26 @@ import { Upload, Loader2, CheckCircle2 } from 'lucide-react';
 import { toast } from 'sonner';
 
 export default function UploadCertificate() {
+
+const handleUpload = async (file: File) => {
+  const hash = await hashFile(file);
+
+  const contract = await getContract();
+  const tx = await contract.addCertificate("0x" + hash);
+
+  await tx.wait();
+
+  alert("Certificate stored on blockchain!");
+};
+  <input
+  type="file"
+  onChange={(e) => {
+    if (e.target.files) {
+      handleUpload(e.target.files[0]);
+    }
+  }}
+/>
+  
   const { isConnected, account } = useWeb3();
   const [file, setFile] = useState<File | null>(null);
   const [studentAddress, setStudentAddress] = useState('');
