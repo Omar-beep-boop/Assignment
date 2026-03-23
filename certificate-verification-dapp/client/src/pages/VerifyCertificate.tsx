@@ -1,3 +1,5 @@
+import { getContract } from "../lib/contract";
+import { hashFile } from "../utils/hash";
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -7,6 +9,28 @@ import { useWeb3 } from '@/hooks/useWeb3';
 import { generateFileHash, toBytes32, formatAddress, truncateHash, isValidBytes32 } from '@/lib/certificateUtils';
 import { Upload, CheckCircle2, XCircle, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
+
+const handleVerify = async (file: File) => {
+  const hash = await hashFile(file);
+
+  const contract = await getContract();
+  const exists = await contract.verifyCertificate("0x" + hash);
+
+  if (exists) {
+    alert("✅ Certificate is VALID");
+  } else {
+    alert("❌ Certificate NOT found");
+  }
+};
+
+<input
+  type="file"
+  onChange={(e) => {
+    if (e.target.files) {
+      handleVerify(e.target.files[0]);
+    }
+  }}
+/>
 
 interface VerificationResult {
   isValid: boolean;
