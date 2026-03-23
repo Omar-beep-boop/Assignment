@@ -5,6 +5,10 @@ import { Link } from 'wouter';
 import { CheckCircle2, Shield, Zap } from 'lucide-react';
 
 export default function Home() {
+  const handleConnect = async () => {
+    const account = await connectWallet();
+    console.log("Connected:", account);
+  };
   return (
     <div className="min-h-screen flex flex-col">
       {/* Hero Section */}
@@ -18,6 +22,11 @@ export default function Home() {
               Leverage blockchain technology for transparent, immutable, and trustless verification of academic credentials. Eliminate fraud and streamline the verification process.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+              <button onClick={handleConnect} className="bg-primary text-white px-6 py-3 rounded-lg">
+                Connect Wallet
+              </button>
+              
               <Link href="/verify">
                 <Button size="lg" className="w-full sm:w-auto">
                   Verify Certificate
